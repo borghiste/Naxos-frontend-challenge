@@ -14,7 +14,7 @@ export default function PostForm() {
     const cleanBody = body.trim()
 
     if (!cleanTitle || !cleanBody) {
-      setFeedback({ type: 'error', message: 'Inserisci sia un titolo sia il contenuto.' })
+      setFeedback({ type: 'error', message: 'title and text are required ' })
       return
     }
 
@@ -25,11 +25,11 @@ export default function PostForm() {
       await addPost({ title: cleanTitle, body: cleanBody })
       setTitle('')
       setBody('')
-      setFeedback({ type: 'success', message: 'Post aggiunto alla raccolta.' })
+      setFeedback({ type: 'success', message: 'Post added to the library.' })
     } catch (error) {
       setFeedback({
         type: 'error',
-        message: error instanceof Error ? error.message : 'Impossibile aggiungere il post.',
+        message: error instanceof Error ? error.message : 'an unexpected error occurred.',
       })
     } finally {
       setIsSaving(false)
@@ -39,29 +39,29 @@ export default function PostForm() {
   return (
     <aside className="composer-panel">
       <div className="panel-heading">
-        <p className="eyebrow">Nuovo contenuto</p>
+        <p className="eyebrow">New Post</p>
         <h2>Scrivi un post</h2>
       </div>
       <form onSubmit={handleSubmit} noValidate>
-        <label htmlFor="post-title">Titolo</label>
+        <label htmlFor="post-title">Title</label>
         <input
           id="post-title"
           value={title}
           onChange={(event) => setTitle(event.target.value)}
-          placeholder="Un titolo chiaro"
+          placeholder="Title"
           disabled={isSaving}
         />
-        <label htmlFor="post-body">Contenuto</label>
+        <label htmlFor="post-body">Content</label>
         <textarea
           id="post-body"
           value={body}
           onChange={(event) => setBody(event.target.value)}
-          placeholder="Cosa vuoi raccontare?"
+          placeholder="Text..."
           rows="6"
           disabled={isSaving}
         />
         <button className="primary-button" type="submit" disabled={isSaving}>
-          {isSaving ? 'Salvataggio...' : 'Pubblica post'}
+          {isSaving ? 'Submitting...' : 'Add Post'}
         </button>
         {feedback.message && (
           <p className={`form-feedback ${feedback.type}`} role={feedback.type === 'error' ? 'alert' : 'status'}>

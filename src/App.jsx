@@ -16,23 +16,21 @@ export default function App() {
     <main className="app-shell">
       <header className="page-header">
         <div>
-          <p className="eyebrow">Naxos / Content desk</p>
+         
           <h1>Posts library</h1>
-          <p className="intro">
-            Una raccolta semplice per leggere, cercare e aggiungere contenuti.
-          </p>
+          
         </div>
-        <div className="header-mark" aria-hidden="true">N</div>
+        
       </header>
 
-      <section className="workspace" aria-label="Gestione dei post">
+      <section className="workspace" aria-label="Posts workspace">
         <PostForm />
         <div className="posts-panel">
           {status === 'error' && (
             <div className="notice notice-error" role="alert">
-              <strong>Non riesco a caricare i post.</strong>
+              <strong>Unable to load posts</strong>
               <span>{error}</span>
-              <button type="button" onClick={fetchPosts}>Riprova</button>
+              <button type="button" onClick={fetchPosts}>Load posts</button>
             </div>
           )}
           <PostList />

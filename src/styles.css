@@ -22,7 +22,7 @@ body {
 	min-width: 320px;
 	min-height: 100vh;
 	margin: 0;
-	background: radial-gradient(circle at 100% 0, #e4f0ea 0, transparent 24rem), #f5f6f4;
+	background: #f5f6f4;
 }
 
 button, input, textarea { font: inherit; }

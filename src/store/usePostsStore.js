@@ -14,14 +14,14 @@ export const usePostsStore = create((set, get) => ({
 
     try {
       const response = await fetch(API_URL)
-      if (!response.ok) throw new Error('Controlla la connessione e riprova.')
+      if (!response.ok) throw new Error('Error loading.')
 
       const posts = await response.json()
       set({ posts, status: 'success' })
     } catch (error) {
       set({
         status: 'error',
-        error: error instanceof Error ? error.message : 'Si è verificato un errore inatteso.',
+        error: error instanceof Error ? error.message : 'An unexpected error occurred.',
       })
     }
   },
@@ -32,7 +32,7 @@ export const usePostsStore = create((set, get) => ({
       body: JSON.stringify({ title, body, userId: 1 }),
     })
 
-    if (!response.ok) throw new Error('Il nuovo post non è stato salvato.')
+    if (!response.ok) throw new Error('The new post was not saved.')
 
     const post = await response.json()
     set((state) => ({ posts: [{ ...post, isLocal: true }, ...state.posts] }))

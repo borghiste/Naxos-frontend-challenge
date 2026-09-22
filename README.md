@@ -59,6 +59,18 @@ Il resto è a tua discrezione.
 3. Completa la challenge.
 4. Invia il link alla tua repository GitHub.
 
+## Avvio in sviluppo
+
+Installa le dipendenze e avvia il server Vite:
+
+```bash
+pnpm install
+pnpm dev
+```
+
+Vite include l'hot reload: le modifiche ai file React e CSS vengono applicate
+automaticamente nel browser senza riavviare manualmente il server.
+
 ## 🧪 Task
 
 ### 1. Dati da API

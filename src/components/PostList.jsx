@@ -15,28 +15,28 @@ export default function PostList() {
     <section aria-labelledby="library-title">
       <div className="list-toolbar">
         <div>
-          <p className="eyebrow">Archivio</p>
-          <h2 id="library-title">Tutti i post <span>{posts.length}</span></h2>
+        
+          <h2 id="library-title">Posts</h2>
         </div>
         <label className="search-field" htmlFor="post-search">
-          <span className="sr-only">Cerca nei post</span>
+          <span className="sr-only">Search for a post</span>
           <input
             id="post-search"
             value={search}
             onChange={(event) => setSearch(event.target.value)}
-            placeholder="Cerca..."
+            placeholder="Search..."
             type="search"
           />
         </label>
       </div>
 
       {status === 'loading' && (
-        <div className="loading-grid" aria-label="Caricamento dei post">
+        <div className="loading-grid" aria-label="Loading posts">
           {Array.from({ length: 6 }, (_, index) => <div className="post-skeleton" key={index} />)}
         </div>
       )}
       {status === 'success' && filteredPosts.length === 0 && (
-        <p className="state-message">Nessun post corrisponde alla ricerca.</p>
+        <p className="state-message">0 posts found</p>
       )}
       <div className="post-grid">
         {filteredPosts.map((post) => <PostCard key={`${post.id}-${post.title}`} post={post} />)}
